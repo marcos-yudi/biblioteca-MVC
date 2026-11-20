@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Empréstimo')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <h1 th:text="${emprestimo.id == null} ? 'Novo empréstimo' : 'Editar empréstimo'"></h1>
+    <form class="formulario" th:action="@{/emprestimos}" th:object="${emprestimo}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Livro
+            <select name="livro.id" required>
+                <option value="">Selecione</option>
+                <option th:each="livro : ${livros}" th:value="${livro.id}" th:text="${livro.titulo}"
+                        th:selected="${emprestimo.livro != null and emprestimo.livro.id == livro.id}"></option>
+            </select>
+        </label>
+        <label>Usuário
+            <select name="usuario.id" required>
+                <option value="">Selecione</option>
+                <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nome}"
+                        th:selected="${emprestimo.usuario != null and emprestimo.usuario.id == usuario.id}"></option>
+            </select>
+        </label>
+        <label>Data de retirada
+            <input type="date" th:field="*{dataRetirada}" required>
+        </label>
+        <label>Data de devolução
+            <input type="date" th:field="*{dataDevolucao}" required>
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" th:field="*{devolvido}">
+            Livro devolvido
+        </label>
+        <div class="botoes">
+            <button type="submit" class="botao">Salvar</button>
+            <a class="botao secundario" th:href="@{/emprestimos}">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

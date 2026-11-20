@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Usuário')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <h1 th:text="${usuario.id == null} ? 'Novo usuário' : 'Editar usuário'"></h1>
+    <form class="formulario" th:action="@{/usuarios}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Nome
+            <input type="text" th:field="*{nome}" required>
+        </label>
+        <label>E-mail
+            <input type="email" th:field="*{email}" required>
+        </label>
+        <label>Telefone
+            <input type="tel" th:field="*{telefone}">
+        </label>
+        <div class="botoes">
+            <button type="submit" class="botao">Salvar</button>
+            <a class="botao secundario" th:href="@{/usuarios}">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

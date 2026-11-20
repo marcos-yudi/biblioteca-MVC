@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Início')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <h1>Sistema de Biblioteca</h1>
+    <p class="subtitulo">Escolha uma área para gerenciar.</p>
+    <div class="cards">
+        <a class="card" th:href="@{/livros}">
+            <strong th:text="${totalLivros}"></strong>
+            <span>Livros</span>
+        </a>
+        <a class="card" th:href="@{/autores}">
+            <strong th:text="${totalAutores}"></strong>
+            <span>Autores</span>
+        </a>
+        <a class="card" th:href="@{/categorias}">
+            <strong th:text="${totalCategorias}"></strong>
+            <span>Categorias</span>
+        </a>
+        <a class="card" th:href="@{/usuarios}">
+            <strong th:text="${totalUsuarios}"></strong>
+            <span>Usuários</span>
+        </a>
+        <a class="card" th:href="@{/emprestimos}">
+            <strong th:text="${emprestimosAtivos}"></strong>
+            <span>Empréstimos ativos</span>
+        </a>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Livros')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <div class="cabecalho">
+        <h1>Livros</h1>
+        <a class="botao" th:href="@{/livros/novo}">Novo livro</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>ISBN</th>
+            <th>Categoria</th>
+            <th>Situação</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.titulo}"></td>
+            <td th:text="${livro.autor}"></td>
+            <td th:text="${livro.isbn}"></td>
+            <td th:text="${livro.categoria}"></td>
+            <td>
+                <span th:if="${livro.disponivel}" class="etiqueta ok">Disponível</span>
+                <span th:unless="${livro.disponivel}" class="etiqueta alerta">Emprestado</span>
+            </td>
+            <td class="acoes">
+                <a th:href="@{/livros/{id}/editar(id=${livro.id})}">Editar</a>
+                <form th:action="@{/livros/{id}/excluir(id=${livro.id})}" method="post"
+                      onsubmit="return confirm('Excluir este livro?')">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(livros)}">
+            <td colspan="6" class="vazio">Nenhum livro cadastrado.</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

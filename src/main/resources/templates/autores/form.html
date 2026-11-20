@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Autor')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <h1 th:text="${autor.id == null} ? 'Novo autor' : 'Editar autor'"></h1>
+    <form class="formulario" th:action="@{/autores}" th:object="${autor}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Nome
+            <input type="text" th:field="*{nome}" required>
+        </label>
+        <label>Nacionalidade
+            <input type="text" th:field="*{nacionalidade}">
+        </label>
+        <div class="botoes">
+            <button type="submit" class="botao">Salvar</button>
+            <a class="botao secundario" th:href="@{/autores}">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

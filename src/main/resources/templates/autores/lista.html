@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Autores')}"></head>
+<body>
+<header th:replace="~{fragmentos :: menu}"></header>
+<main class="container">
+    <div class="cabecalho">
+        <h1>Autores</h1>
+        <a class="botao" th:href="@{/autores/novo}">Novo autor</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Nacionalidade</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="autor : ${autores}">
+            <td th:text="${autor.nome}"></td>
+            <td th:text="${autor.nacionalidade}"></td>
+            <td class="acoes">
+                <a th:href="@{/autores/{id}/editar(id=${autor.id})}">Editar</a>
+                <form th:action="@{/autores/{id}/excluir(id=${autor.id})}" method="post"
+                      onsubmit="return confirm('Excluir este autor?')">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(autores)}">
+            <td colspan="3" class="vazio">Nenhum autor cadastrado.</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

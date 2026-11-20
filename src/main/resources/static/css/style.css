@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f7f4ee;
+    color: #3d3a35;
+}
+
+a {
+    color: #7a5c3e;
+}
+
+.topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 32px;
+    background: #4a4037;
+}
+
+.topo a {
+    color: #f7f4ee;
+    text-decoration: none;
+}
+
+.marca {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.topo nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.topo nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.subtitulo {
+    color: #7a7268;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e3dcd0;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.card strong {
+    font-size: 2rem;
+}
+
+.card:hover {
+    border-color: #7a5c3e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #e3dcd0;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ece6db;
+}
+
+th {
+    background: #d6c6b6;
+}
+
+.acoes {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+.acoes button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #a8322d;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.vazio {
+    text-align: center;
+    color: #7a7268;
+}
+
+.etiqueta {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.etiqueta.ok {
+    background: #dcebd5;
+    color: #2f5b22;
+}
+
+.etiqueta.alerta {
+    background: #f6e3c6;
+    color: #8a5a12;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+}
+
+.formulario label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formulario label.checkbox {
+    flex-direction: row;
+    align-items: center;
+}
+
+input, select {
+    padding: 8px 10px;
+    border: 1px solid #c9bfb2;
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+.botoes {
+    display: flex;
+    gap: 12px;
+}
+
+.botao {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #7a5c3e;
+    color: #fff;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao.secundario {
+    background: #e3dcd0;
+    color: #3d3a35;
+}
+
+@media (max-width: 640px) {
+    .topo {
+        padding: 16px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
